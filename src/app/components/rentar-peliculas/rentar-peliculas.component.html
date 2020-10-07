@@ -1,0 +1,64 @@
+<mat-card>
+    <h1>Rentar Peliculas</h1> 
+ </mat-card>
+
+<!-- Mostrar -->
+
+<ng-container *ngIf="Opcion == 0">
+
+    <mat-card  *ngFor="let Pelicula of ListaPeliculas">
+
+        <mat-card>
+            <div>
+                Numero: {{Pelicula.idPelicula}}
+            </div>
+            <div>
+                Nombre: {{Pelicula.Nombre}}
+            </div>
+            <div>
+                idEstadoPelicula: {{Pelicula.idEstadoPelicula}}
+            </div>
+            <div>
+                FechaCreacion: {{Pelicula.FechaCreacion}}
+            </div>
+
+
+            <img src="{{ Pelicula.Cubierta}}" style="height: 130px; width:200px ;">
+
+            <div>
+                <button mat-button color="black" (click)="OpcionRentar(Pelicula)">
+                    <mat-icon>create</mat-icon>
+                     Rentar Pelicula
+                </button>
+
+                
+            </div>
+
+
+
+
+        </mat-card>
+
+    </mat-card>
+
+
+</ng-container>
+
+<ng-container *ngIf="Opcion == 1">
+
+  
+    <form class="example-form">
+        <mat-form-field>
+            <mat-label>Buscar Por Nombre</mat-label>
+            <input [formControl]="Codigo" matInput placeholder="Codigo Usuario:" required>
+            <mat-error *ngIf="Codigo.invalid">
+                Debe llenar este campo
+            </mat-error>
+        </mat-form-field>
+        <button mat-button color="black" (click)="Alquilar()">
+            Rentar Pelicula
+        </button>
+
+    </form>
+
+</ng-container>

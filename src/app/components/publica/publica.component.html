@@ -1,0 +1,64 @@
+<mat-card>
+    <h1>Area Publica</h1> 
+ </mat-card>
+
+<!-- Mostrar -->
+<ng-container *ngIf="Opcion == 1">
+
+    <mat-card>
+        <!-- Nombre -->
+        <div class="form-group">
+            <form class="example-form">
+                <mat-form-field>
+                    <mat-label>Buscar Por Nombre</mat-label>
+                    <input [formControl]="Nombre" matInput placeholder="Ej: Camino hacia el terror..." required>
+                    <mat-error *ngIf="Nombre.invalid">
+                        Debe llenar este campo
+                    </mat-error>
+                </mat-form-field>
+                <button mat-button color="black" (click)="GetPeliculaPorNombre()">
+                    Buscar por Nombre
+                </button>
+
+            </form>
+            <button mat-button color="black" (click)="OrganizarPorPuntaje()">
+                Organizar Por Mayor Puntaje
+            </button>
+        </div>
+
+    </mat-card>
+
+    <mat-card *ngFor="let Pelicula of ListaPeliculas">
+
+        <mat-card>
+            <div>
+                Numero: {{Pelicula.idPelicula}}
+            </div>
+            <div>
+                Nombre: {{Pelicula.Nombre}}
+            </div>
+            <div>
+                idEstadoPelicula: {{Pelicula.idEstadoPelicula}}
+            </div>
+            <div>
+                Puntaje: {{Pelicula.Puntaje}}
+            </div>
+            <div>
+                FechaCreacion: {{Pelicula.FechaCreacion}}
+            </div>
+
+
+            <img src="{{ Pelicula.Cubierta}}" style="height: 130px; width:200px ;">
+
+
+
+
+
+
+        </mat-card>
+
+    </mat-card>
+
+
+
+</ng-container>
